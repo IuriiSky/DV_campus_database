@@ -16,7 +16,7 @@ SELECT p.position,
        AVG(s.amount_of_payment) AS avarage_amount
 FROM salary AS s
         INNER  JOIN position AS p ON s.position_id = p.position_id
-GROUP BY p.position_id
+GROUP BY p.position_id;
 
 -- Queries 4
 SELECT e.employee_name, e.employee_surname,
@@ -24,7 +24,7 @@ SELECT e.employee_name, e.employee_surname,
        SUM(r.profit) AS total_income
 FROM result_profit AS r
         INNER JOIN employee AS e ON r.employee_id = e.employee_id
-GROUP BY r.employee_id
+GROUP BY r.employee_id;
 
 -- Queries 5
 SELECT t.license_plate,
@@ -34,7 +34,7 @@ SELECT t.license_plate,
 FROM result_profit AS r
         INNER JOIN transport AS t ON r.transport_id = t.transport_id
 GROUP BY r.transport_id
-ORDER BY worked_days DESC
+ORDER BY worked_days DESC;
 
 --Queries 6
 SELECT *
