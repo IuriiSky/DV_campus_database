@@ -15,6 +15,8 @@ class Fixtures
         try {
             $connection->beginTransaction();
             $this->cleanup();
+            $connection->commit();
+            $connection->beginTransaction();
             $this->generateEmployees(55);
             $this->generateSalary(10000);
             $this->generateTransport(25);

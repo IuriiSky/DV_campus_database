@@ -11,16 +11,23 @@ FROM employee AS e
 GROUP BY s.employee_id;
 
 -- # Queries 3
+-- SELECT p.position,
+--        MAX(s.amount_of_payment) as max_payment,
+--        AVG(s.amount_of_payment) AS avarage_amount
+-- FROM salary AS s
+--         INNER  JOIN position AS p ON s.position_id = p.position_id
+-- GROUP BY p.position_id;
+
 SELECT p.position,
-       MAX(s.amount_of_payment) as max_payment,
-       AVG(s.amount_of_payment) AS avarage_amount
-FROM salary AS s
-        INNER  JOIN position AS p ON s.position_id = p.position_id
+       MAX(e.current_salary) as max_salary,
+       AVG(e.current_salary) as avarage_salary
+FROM  employee AS e
+        INNER  JOIN  position AS p ON e.position_id = p.position_id
 GROUP BY p.position_id;
 
 -- Queries 4
 SELECT e.employee_name, e.employee_surname,
-    COUNT(*) AS worked_days,
+    COUNT(r.employee_id) AS worked_days,
        SUM(r.profit) AS total_income
 FROM result_profit AS r
         INNER JOIN employee AS e ON r.employee_id = e.employee_id
